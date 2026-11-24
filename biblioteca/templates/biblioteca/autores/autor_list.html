@@ -1,0 +1,23 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}Autores | Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>Autores</h2>
+<table border="1" cellpadding="6">
+    <thead>
+        <tr><th>Nombre</th><th>Nacionalidad</th><th>Libros</th></tr>
+    </thead>
+    <tbody>
+        {% for autor in autores %}
+        <tr>
+            <td><a href="{{ autor.get_absolute_url }}">{{ autor.nombre }}</a></td>
+            <td>{{ autor.nacionalidad }}</td>
+            <td>{{ autor.libros.count }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">No hay autores registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

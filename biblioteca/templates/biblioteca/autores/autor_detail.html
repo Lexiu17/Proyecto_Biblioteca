@@ -1,0 +1,20 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}{{ autor.nombre }} | Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>{{ autor.nombre }}</h2>
+<p>Nacionalidad: {{ autor.nacionalidad }}</p>
+<p>Fecha de nacimiento: {{ autor.fecha_nacimiento|default:"-" }}</p>
+
+<h3>Libros de este autor</h3>
+<ul>
+    {% for libro in autor.libros.all %}
+    <li><a href="{{ libro.get_absolute_url }}">{{ libro.titulo }}</a></li>
+    {% empty %}
+    <li>Sin libros registrados.</li>
+    {% endfor %}
+</ul>
+
+<p><a href="{% url 'autor_list' %}">Volver al listado</a></p>
+{% endblock %}
