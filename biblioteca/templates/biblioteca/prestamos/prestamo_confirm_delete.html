@@ -1,0 +1,13 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}Eliminar préstamo{% endblock %}
+
+{% block contenido %}
+<h2>Eliminar préstamo</h2>
+<p>¿Seguro que deseas eliminar el préstamo de «{{ prestamo.nombre_lector }}»?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar eliminación</button>
+    <a href="{% url 'prestamo_list' %}">Cancelar</a>
+</form>
+{% endblock %}

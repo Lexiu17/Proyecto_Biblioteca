@@ -1,0 +1,39 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}{{ libro.titulo }} | Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>{{ libro.titulo }}</h2>
+<p>ISBN: {{ libro.isbn }}</p>
+<p>Año de publicación: {{ libro.anio_publicacion }}</p>
+<p>Precio: {{ libro.precio }}</p>
+<p>Editorial: <a href="{{ libro.editorial.get_absolute_url }}">{{ libro.editorial }}</a></p>
+<p>Registrado por: {{ libro.creado_por|default:"-" }}</p>
+
+<h3>Autores</h3>
+<ul>
+    {% for autor in libro.autores.all %}
+    <li><a href="{{ autor.get_absolute_url }}">{{ autor.nombre }}</a></li>
+    {% empty %}
+    <li>Sin autores.</li>
+    {% endfor %}
+</ul>
+
+<h3>Préstamos de este libro</h3>
+<ul>
+    {% for prestamo in libro.prestamos.all %}
+    <li>
+        <a href="{{ prestamo.get_absolute_url }}">{{ prestamo.nombre_lector }}</a>
+        ({{ prestamo.get_estado_display }})
+    </li>
+    {% empty %}
+    <li>Este libro no tiene préstamos.</li>
+    {% endfor %}
+</ul>
+
+<p>
+    <a href="{% url 'libro_update' libro.pk %}">Editar</a>
+    <a href="{% url 'libro_delete' libro.pk %}">Eliminar</a>
+    <a href="{% url 'libro_list' %}">Volver al listado</a>
+</p>
+{% endblock %}

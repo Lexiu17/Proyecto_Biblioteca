@@ -1,0 +1,20 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}{{ editorial.nombre }} | Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>{{ editorial.nombre }}</h2>
+<p>País: {{ editorial.pais }}</p>
+<p>Fundación: {{ editorial.fundacion|default:"-" }}</p>
+
+<h3>Libros de esta editorial</h3>
+<ul>
+    {% for libro in editorial.libros.all %}
+    <li><a href="{{ libro.get_absolute_url }}">{{ libro.titulo }}</a></li>
+    {% empty %}
+    <li>Sin libros registrados.</li>
+    {% endfor %}
+</ul>
+
+<p><a href="{% url 'editorial_list' %}">Volver al listado</a></p>
+{% endblock %}

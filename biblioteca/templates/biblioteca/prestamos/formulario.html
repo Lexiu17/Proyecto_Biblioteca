@@ -1,0 +1,16 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}{% if form.instance.pk %}Editar préstamo{% else %}Registrar préstamo{% endif %}{% endblock %}
+
+{% block contenido %}
+<h2>{% if form.instance.pk %}Editar préstamo{% else %}Registrar préstamo{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+        <button type="submit">Guardar préstamo</button>
+        <a href="{% url 'prestamo_list' %}">Cancelar</a>
+    </p>
+</form>
+{% endblock %}
+

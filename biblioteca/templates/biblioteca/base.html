@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Biblioteca{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Biblioteca</h1>
+        <nav>
+            <a href="{% url 'home' %}">Inicio</a> |
+            <a href="{% url 'libro_list' %}">Libros</a> |
+            <a href="{% url 'editorial_list' %}">Editoriales</a> |
+            <a href="{% url 'autor_list' %}">Autores</a> |
+            <a href="{% url 'prestamo_list' %}">Préstamos</a>
+        </nav>
+        <hr>
+    </header>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+</body>
+</html>
