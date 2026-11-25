@@ -1,0 +1,15 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}Registro | Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>Crear cuenta</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+        <button type="submit">Registrarme</button>
+        <a href="{% url 'login' %}">Ya tengo cuenta</a>
+    </p>
+</form>
+{% endblock %}

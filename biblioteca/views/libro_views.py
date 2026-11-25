@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from biblioteca.forms import libroForm
 from biblioteca.models import libro as Libro
+from django.contrib.auth.decorators import login_required
 
 def libro_list(request):
     libros = Libro.objects.all()
@@ -14,7 +15,7 @@ def libro_detail(request, libro_id):
     return render(request, 'biblioteca/libros/libro_detail.html',
                   {'libro': libro})
 
-
+@login_required
 def libro_create(request):
     if request.method == 'POST':
         form = libroForm(request.POST)
