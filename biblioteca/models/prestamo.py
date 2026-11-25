@@ -31,15 +31,15 @@ class prestamo(models.Model):
         related_name='prestamos_creados',
     )
 
-def __str__(self):
-    return self.nombre_lector + ' - ' + self.libro.titulo
+    def __str__(self):
+        return self.nombre_lector + ' - ' + self.libro.titulo
 
-def get_absolute_url(self):
-    return reverse('prestamo_detail', args=[self.pk])
+    def get_absolute_url(self):
+        return reverse('prestamo_detail', args=[self.pk])
 
-class Meta:
-    verbose_name = 'Préstamo'
-    verbose_name_plural = 'Préstamos'
-    ordering = ['-fecha_prestamo']
+    class Meta:
+        verbose_name = 'Préstamo'
+        verbose_name_plural = 'Préstamos'
+        ordering = ['-fecha_prestamo']
 
     

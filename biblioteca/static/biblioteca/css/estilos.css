@@ -1,0 +1,451 @@
+/* ============================================================
+   Biblioteca - tema pastel: crema, blanco y rosados
+   ============================================================ */
+
+:root {
+    --crema: #fff8f0;
+    --blanco: #fffdfa;
+    --rosa-suave: #fde4ec;
+    --rosa: #f8c8dc;
+    --rosa-fuerte: #e58fb0;
+    --durazno: #ffd9c7;
+    --lavanda: #e9ddf5;
+    --menta: #d4efdf;
+    --coral: #f4a3a3;
+    --texto: #5a4546;
+    --texto-suave: #8a7273;
+    --sombra: 0 8px 24px rgba(229, 143, 176, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0 1rem 2rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--texto);
+    line-height: 1.6;
+    background: linear-gradient(135deg, #fff8f0, #fde4ec, #f4ebfa, #ffe9dc);
+    background-size: 300% 300%;
+    animation: fondoSuave 18s ease infinite;
+}
+
+@keyframes fondoSuave {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ---------- Encabezado ---------- */
+
+body > header {
+    max-width: 1000px;
+    margin: 1.2rem auto 0;
+    padding: 1.2rem 1.5rem 1.6rem;
+    text-align: center;
+    background: linear-gradient(120deg, var(--rosa), var(--durazno));
+    border-radius: 22px 22px 0 0;
+    box-shadow: var(--sombra);
+    position: relative;
+    overflow: hidden;
+    animation: bajar 0.7s ease both;
+}
+
+/* Lomos de libros decorativos al pie del encabezado */
+body > header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background: repeating-linear-gradient(
+        90deg,
+        #e58fb0 0 22px,
+        #f8c8dc 22px 40px,
+        #ffd9c7 40px 66px,
+        #e9ddf5 66px 84px,
+        #d4efdf 84px 108px
+    );
+}
+
+body > header h1 {
+    margin: 0 0 0.6rem;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    color: #7a3b57;
+}
+
+body > header h1::before {
+    content: "\1F4DA ";
+    display: inline-block;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+}
+
+@keyframes bajar {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+hr {
+    display: none;
+}
+
+/* ---------- Barra de navegación ---------- */
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+nav a {
+    color: #7a3b57;
+    text-decoration: none;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 253, 250, 0.65);
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+nav a:hover {
+    background: var(--blanco);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(229, 143, 176, 0.35);
+}
+
+nav strong {
+    color: #7a3b57;
+}
+
+/* ---------- Contenido principal ---------- */
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.8rem 1.8rem 2.2rem;
+    background: var(--blanco);
+    border-radius: 0 0 22px 22px;
+    box-shadow: var(--sombra);
+    overflow-x: auto;
+    animation: subir 0.8s ease both;
+}
+
+@keyframes subir {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    margin-top: 0;
+    color: #7a3b57;
+    padding-bottom: 0.4rem;
+    border-bottom: 3px dotted var(--rosa);
+}
+
+h3 {
+    color: #a0577a;
+}
+
+main a {
+    color: #b5547a;
+    text-decoration: none;
+    background-image: linear-gradient(var(--rosa-fuerte), var(--rosa-fuerte));
+    background-size: 0 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease, color 0.3s ease;
+}
+
+main a:hover {
+    background-size: 100% 2px;
+    color: #8e3359;
+}
+
+main ul {
+    padding-left: 1.3rem;
+}
+
+main li::marker {
+    color: var(--rosa-fuerte);
+}
+
+/* ---------- Mensajes de éxito ---------- */
+
+.mensajes {
+    max-width: 1000px;
+    margin: 1rem auto 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mensajes li {
+    margin-bottom: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--menta);
+    color: #35604a;
+    border-left: 6px solid #8fcfae;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(143, 207, 174, 0.35);
+    animation: deslizar 0.6s ease both;
+}
+
+@keyframes deslizar {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- Tablas ---------- */
+
+table {
+    width: 100%;
+    border: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(229, 143, 176, 0.2);
+    margin-bottom: 1rem;
+}
+
+th, td {
+    border: none;
+    padding: 0.8rem 1rem;
+    text-align: left;
+}
+
+thead th {
+    background: linear-gradient(120deg, var(--rosa), var(--durazno));
+    color: #7a3b57;
+}
+
+tbody tr {
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+tbody tr:nth-child(even) {
+    background: var(--crema);
+}
+
+tbody tr:hover {
+    background: var(--rosa-suave);
+    box-shadow: inset 5px 0 0 var(--rosa-fuerte);
+}
+
+/* ---------- Botones (enlaces de acción y botones de formulario) ---------- */
+
+a[href$="/crear/"],
+a[href$="/editar/"],
+a[href$="/eliminar/"],
+button[type="submit"] {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    padding: 0.5rem 1.2rem;
+    margin: 0.15rem 0.2rem 0.15rem 0;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #6b2c47;
+    background: linear-gradient(135deg, var(--rosa), var(--durazno));
+    background-image: linear-gradient(135deg, var(--rosa), var(--durazno));
+    background-size: 100% 100%;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(229, 143, 176, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+/* Brillo que cruza el botón */
+a[href$="/crear/"]::before,
+a[href$="/editar/"]::before,
+a[href$="/eliminar/"]::before,
+button[type="submit"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+a[href$="/crear/"]:hover::before,
+a[href$="/editar/"]:hover::before,
+a[href$="/eliminar/"]:hover::before,
+button[type="submit"]:hover::before {
+    left: 130%;
+}
+
+a[href$="/crear/"]:hover,
+a[href$="/editar/"]:hover,
+a[href$="/eliminar/"]:hover,
+button[type="submit"]:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 20px rgba(229, 143, 176, 0.5);
+    color: #6b2c47;
+}
+
+a[href$="/crear/"]:active,
+a[href$="/editar/"]:active,
+a[href$="/eliminar/"]:active,
+button[type="submit"]:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Editar: lavanda */
+a[href$="/editar/"] {
+    background-image: linear-gradient(135deg, var(--lavanda), #d5e6f7);
+    box-shadow: 0 4px 10px rgba(180, 160, 220, 0.35);
+}
+
+a[href$="/editar/"]:hover {
+    box-shadow: 0 10px 20px rgba(180, 160, 220, 0.5);
+}
+
+/* Eliminar: coral suave */
+a[href$="/eliminar/"] {
+    background-image: linear-gradient(135deg, #ffd0d0, var(--coral));
+    box-shadow: 0 4px 10px rgba(244, 163, 163, 0.4);
+}
+
+a[href$="/eliminar/"]:hover {
+    box-shadow: 0 10px 20px rgba(244, 163, 163, 0.6);
+}
+
+/* Botones dentro de las tablas: más pequeños */
+td a[href$="/editar/"],
+td a[href$="/eliminar/"] {
+    padding: 0.25rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+/* Botón Salir de la barra */
+nav button[type="submit"] {
+    padding: 0.35rem 1rem;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+nav form {
+    margin: 0;
+}
+
+/* Quitar el subrayado animado a los enlaces que parecen botones */
+main a[href$="/crear/"],
+main a[href$="/editar/"],
+main a[href$="/eliminar/"] {
+    background-size: 100% 100%;
+}
+
+/* ---------- Formularios ---------- */
+
+form p {
+    margin: 0 0 1rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    color: #a0577a;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    max-width: 420px;
+    padding: 0.55rem 0.8rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--texto);
+    background: var(--crema);
+    border: 2px solid var(--rosa);
+    border-radius: 12px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--rosa-fuerte);
+    box-shadow: 0 0 0 4px rgba(248, 200, 220, 0.6);
+}
+
+input[type="checkbox"] {
+    accent-color: var(--rosa-fuerte);
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+}
+
+/* Lista de autores (checkboxes): se parece a una lista de etiquetas */
+form div label {
+    font-weight: normal;
+    color: var(--texto);
+    padding: 0.15rem 0.5rem;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+form div label:hover {
+    background: var(--rosa-suave);
+}
+
+.errorlist {
+    list-style: none;
+    padding: 0.5rem 0.8rem;
+    margin: 0 0 0.5rem;
+    background: #ffe3e3;
+    color: #a14444;
+    border-radius: 10px;
+}
+
+.helptext {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+
+@media (max-width: 600px) {
+    body > header h1 {
+        font-size: 1.6rem;
+    }
+
+    main {
+        padding: 1.2rem 1rem 1.6rem;
+    }
+
+    th, td {
+        padding: 0.6rem 0.5rem;
+    }
+}
+
+/* ---------- Accesibilidad: respetar a quien no quiere animaciones ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

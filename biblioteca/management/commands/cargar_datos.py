@@ -15,8 +15,8 @@ class Command(BaseCommand):
         call_command('crear_grupos')
 
         # ---------- Usuarios de prueba ----------
-        if not User.objects.filter(username='superadmin').exists():
-            User.objects.create_superuser('superadmin', 'superadmin@biblioteca.com', 'Super12345')
+        if not User.objects.filter(username='nenata').exists():
+            User.objects.create_superuser('nenata', 'nenata@biblioteca.com', '12345')
 
         admin1, creado = User.objects.get_or_create(
             username='admin1',
@@ -27,13 +27,13 @@ class Command(BaseCommand):
         admin1.save()
         admin1.groups.add(Group.objects.get(name='administradores'))
 
-        consultor1, creado = User.objects.get_or_create(
-            username='consultor1',
-            defaults={'email': 'consultor1@biblioteca.com'},
+        lector1, creado = User.objects.get_or_create(
+            username='lector1',
+            defaults={'email': 'lector1@biblioteca.com'},
         )
-        consultor1.set_password('Consultor12345')
-        consultor1.save()
-        consultor1.groups.add(Group.objects.get(name='consultores'))
+        lector1.set_password('lect12345')
+        lector1.save()
+        lector1.groups.add(Group.objects.get(name='consultores'))
 
         # ---------- Editoriales ----------
         editoriales = [
@@ -69,11 +69,11 @@ class Command(BaseCommand):
             ('Cien años de soledad', '978-0000000011', 1967, '18.50', 'Alfaguara',
              ['Gabriel García Márquez'], 'admin1'),
             ('La casa de los espíritus', '978-0000000028', 1982, '16.90', 'Planeta',
-             ['Isabel Allende'], 'consultor1'),
+             ['Isabel Allende'], 'lector1'),
             ('Ficciones', '978-0000000035', 1944, '14.00', 'Fondo de Cultura Económica',
              ['Jorge Luis Borges'], 'admin1'),
             ('La ciudad y los perros', '978-0000000042', 1963, '15.75', 'Alfaguara',
-             ['Mario Vargas Llosa'], 'consultor1'),
+             ['Mario Vargas Llosa'], 'lector1'),
             ('Antología del cuento latinoamericano', '978-0000000059', 1975, '22.00', 'Anagrama',
              ['Jorge Luis Borges', 'Julio Cortázar'], 'admin1'),
         ]
@@ -122,4 +122,4 @@ class Command(BaseCommand):
         print('Autores:', Autor.objects.count())
         print('Libros:', Libro.objects.count())
         print('Prestamos:', Prestamo.objects.count())
-        print('Usuarios de prueba: superadmin, admin1, consultor1')
+        print('Usuarios de prueba: nenata, admin1, lector1')
