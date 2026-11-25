@@ -5,6 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_POST
+from django.contrib.auth.models import Group
 
 from biblioteca.forms import RegistroForm
 
@@ -13,13 +14,15 @@ def registro(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
         if form.is_valid():
-            form.save()
+            usuario = form.save()
+            grupo = Group.objects.filter(name='consultores').first()
+            if grupo:
+                usuario.groups.add(grupo)
             messages.success(request, 'Cuenta creada exitosamente. Ahora inicia sesión.')
             return redirect('login')
     else:
         form = RegistroForm()
     return render(request, 'biblioteca/auth/registro.html', {'form': form})
-
 
 def iniciar_sesion(request):
     siguiente = request.GET.get('next', '')

@@ -32,8 +32,14 @@
 </ul>
 
 <p>
-    <a href="{% url 'libro_update' libro.pk %}">Editar</a>
+    {% if perms.biblioteca.change_libro %}
+        {% if perms.biblioteca.editar_todos_libros or libro.creado_por == user %}
+        <a href="{% url 'libro_update' libro.pk %}">Editar</a>
+        {% endif %}
+    {% endif %}
+    {% if perms.biblioteca.delete_libro %}
     <a href="{% url 'libro_delete' libro.pk %}">Eliminar</a>
+    {% endif %}
     <a href="{% url 'libro_list' %}">Volver al listado</a>
 </p>
 {% endblock %}

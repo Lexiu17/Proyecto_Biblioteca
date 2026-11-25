@@ -4,7 +4,9 @@
 
 {% block contenido %}
 <h2>Préstamos</h2>
+{% if perms.biblioteca.add_prestamo %}
 <p><a href="{% url 'prestamo_create' %}">Registrar préstamo</a></p>
+{% endif %}
 
 <table border="1" cellpadding="6">
     <thead>
@@ -24,8 +26,12 @@
             <td>{{ prestamo.fecha_prestamo }}</td>
             <td>{{ prestamo.get_estado_display }}</td>
             <td>
+                {% if perms.biblioteca.change_prestamo %}
                 <a href="{% url 'prestamo_update' prestamo.pk %}">Editar</a>
+                {% endif %}
+                {% if perms.biblioteca.delete_prestamo %}
                 <a href="{% url 'prestamo_delete' prestamo.pk %}">Eliminar</a>
+                {% endif %}
             </td>
         </tr>
         {% empty %}
