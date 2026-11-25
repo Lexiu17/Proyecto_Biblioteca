@@ -56,4 +56,4 @@ El comando `python manage.py cargar_datos` crea los grupos `administradores` y `
 | admin1 | Admin12345 | administradores | Crear, editar y eliminar en las cuatro entidades |
 | lector1 | lect12345 | consultores | Ver todo, crear libros y editar solo los que creó |
 
-Los usuarios que se registran en `/registro/` entran automáticamente al grupo `consultores`.
+Los usuarios que se registran en `/registro/` entran automáticamente al grupo `consultores`
