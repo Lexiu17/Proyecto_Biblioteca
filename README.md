@@ -30,7 +30,7 @@ Editorial 1 ──── N Libro N ──── N Autor
 
 ```bash
 git clone [https://github.com/Lexiu17/Proyecto_Biblioteca]
-cd biblioteca-app
+cd Proyecto_Biblioteca
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
