@@ -17,7 +17,7 @@ class prestamo(models.Model):
     )
     nombre_lector = models.CharField(max_length=100)
     fecha_prestamo = models.DateField()
-    fecha_devolucion = models.DateField()
+    fecha_devolucion = models.DateField(blank=True, null=True)
     estado = models.CharField(
         max_length=10,
         choices=EstadoPrestamo.choices,
