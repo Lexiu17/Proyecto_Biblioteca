@@ -4,6 +4,10 @@
 
 {% block contenido %}
 <h2>Editoriales</h2>
+{% if perms.biblioteca.add_editorial %}
+<p><a href="{% url 'editorial_create' %}">Registrar editorial</a></p>
+{% endif %}
+
 <table border="1" cellpadding="6">
     <thead>
         <tr><th>Nombre</th><th>País</th><th>Libros</th></tr>

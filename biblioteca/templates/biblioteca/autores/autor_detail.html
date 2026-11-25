@@ -16,5 +16,10 @@
     {% endfor %}
 </ul>
 
-<p><a href="{% url 'autor_list' %}">Volver al listado</a></p>
+<p>
+    {% if perms.biblioteca.change_autor %}
+    <a href="{% url 'autor_update' autor.pk %}">Editar</a>
+    {% endif %}
+    <a href="{% url 'autor_list' %}">Volver al listado</a>
+</p>
 {% endblock %}

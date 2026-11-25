@@ -4,6 +4,10 @@
 
 {% block contenido %}
 <h2>Autores</h2>
+{% if perms.biblioteca.add_autor %}
+<p><a href="{% url 'autor_create' %}">Registrar autor</a></p>
+{% endif %}
+
 <table border="1" cellpadding="6">
     <thead>
         <tr><th>Nombre</th><th>Nacionalidad</th><th>Libros</th></tr>
