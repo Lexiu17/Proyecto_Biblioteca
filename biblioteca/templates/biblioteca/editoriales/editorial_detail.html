@@ -16,5 +16,10 @@
     {% endfor %}
 </ul>
 
-<p><a href="{% url 'editorial_list' %}">Volver al listado</a></p>
+<p>
+    {% if perms.biblioteca.change_editorial %}
+    <a href="{% url 'editorial_update' editorial.pk %}">Editar</a>
+    {% endif %}
+    <a href="{% url 'editorial_list' %}">Volver al listado</a>
+</p>
 {% endblock %}

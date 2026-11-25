@@ -1,0 +1,15 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}{% if form.instance.pk %}Editar editorial{% else %}Registrar editorial{% endif %}{% endblock %}
+
+{% block contenido %}
+<h2>{% if form.instance.pk %}Editar editorial{% else %}Registrar editorial{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+        <button type="submit">Guardar editorial</button>
+        <a href="{% url 'editorial_list' %}">Cancelar</a>
+    </p>
+</form>
+{% endblock %}
