@@ -38,6 +38,7 @@ python manage.py migrate
 python manage.py cargar_datos
 python manage.py runserver
 ```
+En caso de salir un error con python usar py
 
 En Linux o Mac, la activación es `source venv/bin/activate`.
 
