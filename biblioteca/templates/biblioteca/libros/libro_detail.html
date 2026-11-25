@@ -5,7 +5,7 @@
 {% block contenido %}
 <h2>{{ libro.titulo }}</h2>
 <p>ISBN: {{ libro.isbn }}</p>
-<p>Año de publicación: {{ libro.anio_publicacion }}</p>
+<p>Año de publicación: {{ libro.año_publicacion }}</p>
 <p>Precio: {{ libro.precio }}</p>
 <p>Editorial: <a href="{{ libro.editorial.get_absolute_url }}">{{ libro.editorial }}</a></p>
 <p>Registrado por: {{ libro.creado_por|default:"-" }}</p>
