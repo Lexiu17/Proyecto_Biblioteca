@@ -36,3 +36,6 @@ class libro(models.Model):
         verbose_name = 'Libro'
         verbose_name_plural = 'Libros'
         ordering = ['titulo']
+        permissions = [
+            ('editar_todos_libros', 'Puede editar libros creados por otros'),
+        ]
