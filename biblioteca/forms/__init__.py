@@ -1,8 +1,8 @@
-from biblioteca.forms.editorial_from import editorialForm
-from biblioteca.forms.autor_from import autorForm
-from biblioteca.forms.libro_from import libroForm
-from biblioteca.forms.prestamo_from import prestamoForm
-from biblioteca.forms.registro_from import RegistroForm
+from biblioteca.forms.editorial_form import editorialForm
+from biblioteca.forms.autor_form import autorForm
+from biblioteca.forms.libro_form import libroForm
+from biblioteca.forms.prestamo_form import prestamoForm
+from biblioteca.forms.registro_form import RegistroForm
 
 AutorForm = autorForm
 EditorialForm = editorialForm
