@@ -8,3 +8,4 @@ from biblioteca.views.libro_views import (
 from biblioteca.views.prestamo_views import (
     prestamo_list, prestamo_detail, prestamo_create, prestamo_update, prestamo_delete,
 )
+from biblioteca.views.auth_views import registro, iniciar_sesion, cerrar_sesion
