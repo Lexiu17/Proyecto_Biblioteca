@@ -1,0 +1,16 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}Iniciar sesión | Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>Iniciar sesión</h2>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {{ form.as_p }}
+    <p>
+        <button type="submit">Entrar</button>
+        <a href="{% url 'registro' %}">Crear cuenta</a>
+    </p>
+</form>
+{% endblock %}
