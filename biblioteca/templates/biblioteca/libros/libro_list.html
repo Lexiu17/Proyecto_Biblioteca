@@ -4,7 +4,9 @@
 
 {% block contenido %}
 <h2>Libros</h2>
+{% if perms.biblioteca.add_libro %}
 <p><a href="{% url 'libro_create' %}">Registrar libro</a></p>
+{% endif %}
 
 <table border="1" cellpadding="6">
     <thead>
@@ -24,8 +26,14 @@
             <td>{{ libro.anio_publicacion }}</td>
             <td>{{ libro.precio }}</td>
             <td>
-                <a href="{% url 'libro_update' libro.pk %}">Editar</a>
+                {% if perms.biblioteca.change_libro %}
+                    {% if perms.biblioteca.editar_todos_libros or libro.creado_por == user %}
+                    <a href="{% url 'libro_update' libro.pk %}">Editar</a>
+                    {% endif %}
+                {% endif %}
+                {% if perms.biblioteca.delete_libro %}
                 <a href="{% url 'libro_delete' libro.pk %}">Eliminar</a>
+                {% endif %}
             </td>
         </tr>
         {% empty %}

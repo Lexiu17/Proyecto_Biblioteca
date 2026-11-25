@@ -1,0 +1,9 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}Acceso denegado | Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>403 - Acceso denegado</h2>
+<p>No tienes permiso para realizar esta acción.</p>
+<p><a href="{% url 'home' %}">Volver al inicio</a></p>
+{% endblock %}

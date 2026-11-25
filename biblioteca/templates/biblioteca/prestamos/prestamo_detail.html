@@ -1,0 +1,22 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block titulo %}Préstamo | Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>Préstamo de {{ prestamo.nombre_lector }}</h2>
+<p>Libro: <a href="{{ prestamo.libro.get_absolute_url }}">{{ prestamo.libro }}</a></p>
+<p>Fecha de préstamo: {{ prestamo.fecha_prestamo }}</p>
+<p>Fecha de devolución: {{ prestamo.fecha_devolucion|default:"-" }}</p>
+<p>Estado: {{ prestamo.get_estado_display }}</p>
+<p>Registrado por: {{ prestamo.creado_por|default:"-" }}</p>
+
+<p>
+    {% if perms.biblioteca.change_prestamo %}
+    <a href="{% url 'prestamo_update' prestamo.pk %}">Editar</a>
+    {% endif %}
+    {% if perms.biblioteca.delete_prestamo %}
+    <a href="{% url 'prestamo_delete' prestamo.pk %}">Eliminar</a>
+    {% endif %}
+    <a href="{% url 'prestamo_list' %}">Volver al listado</a>
+</p>
+{% endblock %}
